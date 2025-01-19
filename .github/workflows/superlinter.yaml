@@ -33,6 +33,6 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
-          publishDir: build  # Specify the output directory (update if needed)
-          netlifySiteId: ${{ secrets.NETLIFY_SITE_ID }}  # Use the Site ID from secrets
-          netlifyToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}  # Use the Netlify auth token from secrets
+          publishDir: build
+          netlifySiteId: ${{ secrets.NETLIFY_SITE_ID }}
+          netlifyToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}
