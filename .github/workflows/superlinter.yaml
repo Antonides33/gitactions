@@ -22,7 +22,7 @@ jobs:
   deploy:
     name: Deploy to Netlify
     runs-on: ubuntu-latest
-    needs: lint  # Ensure this job runs only if the lint job succeeds
+    needs: lint
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
