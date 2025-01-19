@@ -1,9 +1,8 @@
-Lint and Deploy to Netlify
+name: Netlify Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   lint:
@@ -11,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v4 # Use latest checkout version
       - name: Run Super-Linter
         uses: github/super-linter@v4
         env:
@@ -25,14 +23,10 @@ jobs:
     needs: lint
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Build Project
-        run: npm install && npm run build  # Install dependencies and build the project
-
+        uses: actions/checkout@v4 # Use latest checkout version
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3.0
+        uses: nwtgck/actions-netlify@v3.0 # Or latest from marketplace (e.g., v4)
         with:
-          publishDir: build
+          publishDir: ./ # Important: Matches your --dir flag
           netlifySiteId: ${{ secrets.NETLIFY_SITE_ID }}
           netlifyToken: ${{ secrets.NETLIFY_AUTH_TOKEN }}
